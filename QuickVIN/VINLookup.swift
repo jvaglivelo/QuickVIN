@@ -26,11 +26,12 @@ struct VINData: Decodable {
     let PlantCity: String
     let PlantCountry: String
     let VehicleType: String
-    
+    let DisplacementL: String
+    let Series: String
 }
 
 
-func getVINData(vin: String){
+func getVINData(vin: String, completionBlock: @escaping ([VINData]) -> Void) -> Void {
     
     //create the url with NSURL
     let url = URL(string: "https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/\(vin)*BA?format=json")!
@@ -48,7 +49,8 @@ func getVINData(vin: String){
 
             let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
             let carData = apiResponse.Results
-            print(carData)
+            completionBlock(carData);
+
         
        } catch let error {
          print(error.localizedDescription)
