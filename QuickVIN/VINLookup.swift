@@ -12,6 +12,7 @@ struct ApiResponse: Decodable {
 }
 
 struct VINData: Decodable {
+    let ErrorCode: String
     let VIN: String
     let Make: String
     let Manufacturer: String
@@ -28,6 +29,11 @@ struct VINData: Decodable {
     let VehicleType: String
     let DisplacementL: String
     let Series: String
+    //Electric Car Exclusives
+    let BatteryType: String
+    let EVDriveUnit: String
+    let BatteryKWh: String
+    let BatteryKWh_to: String
 }
 
 
