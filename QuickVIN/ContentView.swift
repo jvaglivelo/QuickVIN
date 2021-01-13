@@ -34,7 +34,7 @@ struct ContentView: View {
             if (isLoaded){
                 Text(carVIN)
                 VStack {
-                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "")])
+                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "")])
                 }
             }
             
@@ -93,7 +93,12 @@ struct carInfoList: View {
                 
                         //Style
                         carInfoCell(title: "Style", value: carData[0].Doors + "-door " + carData[0].VehicleType, checker: carData[0].Doors)
-                    
+                        //Transmission
+                        carInfoCell(title: "Transmission", value: carData[0].TransmissionSpeeds + " " + carData[0].TransmissionStyle, checker: carData[0].TransmissionSpeeds)
+                        
+                        //Turbo
+                        carInfoCell(title: "Turbocharger", value: carData[0].Turbo, checker: carData[0].Turbo)
+
                     }
                 }else if (carData[0].ErrorCode.isEmpty){
                     carInfoCell(title: "Loading...", value: "", checker: "Loading...")

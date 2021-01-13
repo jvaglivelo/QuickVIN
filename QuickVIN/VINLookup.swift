@@ -34,6 +34,10 @@ struct VINData: Decodable {
     let EVDriveUnit: String
     let BatteryKWh: String
     let BatteryKWh_to: String
+    //Misc.
+    let TransmissionSpeeds: String
+    let TransmissionStyle: String
+    let Turbo: String
 }
 
 
