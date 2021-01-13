@@ -33,6 +33,11 @@ struct ContentView: View {
             }
             if (isLoaded){
                 Text(carVIN)
+                Button(action: {
+                    isLoaded = false
+                }) {
+                    Text("Clear")
+                }
                 VStack {
                     carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "")])
                 }
@@ -108,7 +113,7 @@ struct carInfoList: View {
                 }
             }
         }.onAppear(){
-            getVINData(vin: "5YJSA1H13EFP52468") { (output) in
+            getVINData(vin: carVin) { (output) in
                 carData = output
             }
 
