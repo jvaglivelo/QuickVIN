@@ -31,6 +31,16 @@ struct ContentView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .multilineTextAlignment(.center)
+                Button(action: {
+                    
+                }) {
+                    Text("Scan VIN")
+                        .foregroundColor(.white)
+                        .padding(5)
+                        .background(Color.accentColor)
+                        .cornerRadius(8)
+                }
+                Spacer()
             }
             if (isLoaded){
                 Button(action: {
