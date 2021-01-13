@@ -35,6 +35,7 @@ struct ContentView: View {
             if (isLoaded){
                 Button(action: {
                     isLoaded = false
+                    carVIN = ""
                 }) {
                     Text("Clear")
                         .frame(width: UIScreen.main.bounds.width * 0.9, height: 25, alignment: .center)
