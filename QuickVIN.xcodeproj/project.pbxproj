@@ -11,6 +11,7 @@
 		4A5A3F8725AF695E00140D4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A3F8625AF695E00140D4D /* ContentView.swift */; };
 		4A5A3F8925AF695F00140D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A3F8825AF695F00140D4D /* Assets.xcassets */; };
 		4A5A3F8C25AF695F00140D4D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A3F8B25AF695F00140D4D /* Preview Assets.xcassets */; };
+		4A5A3F9525AF69AB00140D4D /* VINLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A3F9425AF69AB00140D4D /* VINLookup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		4A5A3F8825AF695F00140D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A5A3F8B25AF695F00140D4D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A5A3F8D25AF695F00140D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A5A3F9425AF69AB00140D4D /* VINLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINLookup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				4A5A3F8425AF695E00140D4D /* QuickVINApp.swift */,
 				4A5A3F8625AF695E00140D4D /* ContentView.swift */,
+				4A5A3F9425AF69AB00140D4D /* VINLookup.swift */,
 				4A5A3F8825AF695F00140D4D /* Assets.xcassets */,
 				4A5A3F8D25AF695F00140D4D /* Info.plist */,
 				4A5A3F8A25AF695F00140D4D /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A5A3F8725AF695E00140D4D /* ContentView.swift in Sources */,
+				4A5A3F9525AF69AB00140D4D /* VINLookup.swift in Sources */,
 				4A5A3F8525AF695E00140D4D /* QuickVINApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
