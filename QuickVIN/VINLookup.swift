@@ -26,6 +26,7 @@ struct VINData: Decodable {
     let FuelTypePrimary: String
     let FuelTypeSecondary: String
     let PlantCity: String
+    let PlantState: String
     let PlantCountry: String
     let VehicleType: String
     let DisplacementL: String
@@ -44,6 +45,8 @@ struct VINData: Decodable {
     let BasePrice:String
     let SeatRows: String
     let Seats: String
+    let Trim: String
+    let EngineModel: String
 }
 
 

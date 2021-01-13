@@ -61,7 +61,7 @@ struct ContentView: View {
 
                 }
                 VStack {
-                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", FuelTypeSecondary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", ElectrificationLevel: "", BatteryInfo: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "", BasePrice: "", SeatRows: "", Seats: "")])
+                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", FuelTypeSecondary: "", PlantCity: "", PlantState: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", ElectrificationLevel: "", BatteryInfo: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "", BasePrice: "", SeatRows: "", Seats: "", Trim: "", EngineModel: "")])
                 }
             }
             
@@ -114,6 +114,9 @@ struct carInfoList: View {
                         //Main Info
                         carInfoCell(title: "Vehicle", value: carData[0].ModelYear + " " + carData[0].Make + " " + carData[0].Model, checker: carData[0].Model)
                         
+                        //Trim
+                        carInfoCell(title: "Trim", value: carData[0].Trim, checker: carData[0].Trim)
+
                         //Base Price
                         carInfoCell(title: "Base Price", value: "$" + carData[0].BasePrice, checker: carData[0].BasePrice)
 
@@ -124,7 +127,7 @@ struct carInfoList: View {
                         carInfoCell(title: "Drive Type", value: carData[0].DriveType, checker: carData[0].DriveType)
                 
                         //Manufacturer Location
-                        carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + ", " + carData[0].PlantCountry, checker: carData[0].PlantCity)
+                        carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + "," + carData[0].PlantState + " " +  carData[0].PlantCountry, checker: carData[0].PlantCity)
                 
                         //Vehicle Type
                         carInfoCell(title: "Vehicle Type", value: carData[0].VehicleType, checker: carData[0].VehicleType)
@@ -137,13 +140,15 @@ struct carInfoList: View {
 
                         //Engine
                         carInfoCell(title: "Engine", value: carData[0].DisplacementL + "L " + carData[0].EngineCylinders + "-cylinder engine", checker: carData[0].DisplacementL)
-                
-                        //Motor
-                        carInfoCell(title: "Motor", value: carData[0].EVDriveUnit, checker: carData[0].EVDriveUnit)
-                                
+                                                
                     }
                     Group {
-                        
+                        //Engine Model
+                        carInfoCell(title: "Engine Model", value: carData[0].EngineModel, checker: carData[0].EngineModel)
+
+                        //Motor
+                        carInfoCell(title: "Motor", value: carData[0].EVDriveUnit, checker: carData[0].EVDriveUnit)
+
                         //Battery Type
                         carInfoCell(title: "Battery Type", value: carData[0].BatteryType, checker: carData[0].BatteryType)
                         
@@ -169,9 +174,11 @@ struct carInfoList: View {
                         //Transmission
                         carInfoCell(title: "Transmission", value: carData[0].TransmissionSpeeds + "-speed " + carData[0].TransmissionStyle, checker: carData[0].TransmissionSpeeds)
                         
+                    }
+                    Group {
                         //Turbo
                         carInfoCell(title: "Turbocharger", value: carData[0].Turbo, checker: carData[0].Turbo)
-
+                        
                     }
                 }else if (carData[0].ErrorCode.isEmpty){
                     carInfoCell(title: "Loading...", value: "", checker: "Loading...")
