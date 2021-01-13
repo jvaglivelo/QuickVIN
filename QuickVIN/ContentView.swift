@@ -32,11 +32,16 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
             }
             if (isLoaded){
-                Text(carVIN)
                 Button(action: {
                     isLoaded = false
                 }) {
                     Text("Clear")
+                        .frame(width: UIScreen.main.bounds.width * 0.9, height: 25, alignment: .center)
+                        .foregroundColor(.white)
+                        .padding(5)
+                        .background(Color.accentColor)
+                        .cornerRadius(8)
+
                 }
                 VStack {
                     carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "")])
