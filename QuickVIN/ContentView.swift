@@ -25,6 +25,7 @@ struct ContentView: View {
                 TextField("Enter VIN", text: $carVIN, onEditingChanged: { (changed) in
                 }) {
                     print("VIN Entered")
+                    carVIN = carVIN.replacingOccurrences(of: " ", with: "")
                     isLoaded = true
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
