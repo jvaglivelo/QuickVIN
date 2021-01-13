@@ -44,7 +44,7 @@ struct ContentView: View {
 
                 }
                 VStack {
-                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "")])
+                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", FuelTypeSecondary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", ElectrificationLevel: "", BatteryInfo: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "", BasePrice: "", SeatRows: "", Seats: "")])
                 }
             }
             
@@ -69,7 +69,10 @@ struct carInfoList: View {
                 Group {
                         //Main Info
                         carInfoCell(title: "Vehicle", value: carData[0].ModelYear + " " + carData[0].Make + " " + carData[0].Model, checker: carData[0].Model)
-                
+                        
+                        //Base Price
+                        carInfoCell(title: "Base Price", value: "$" + carData[0].BasePrice, checker: carData[0].BasePrice)
+
                         //Series
                         carInfoCell(title: "Series", value: carData[0].Series, checker: carData[0].Series)
                 
@@ -83,28 +86,44 @@ struct carInfoList: View {
                         carInfoCell(title: "Vehicle Type", value: carData[0].VehicleType, checker: carData[0].VehicleType)
                 
                         //Primary Fuel
-                        carInfoCell(title: "Fuel Type", value: carData[0].FuelTypePrimary, checker: carData[0].FuelTypePrimary)
+                        carInfoCell(title: "Primary Fuel Type", value: carData[0].FuelTypePrimary, checker: carData[0].FuelTypePrimary)
                 
+                        //Primary Fuel
+                        carInfoCell(title: "Secondary Fuel Type", value: carData[0].FuelTypeSecondary, checker: carData[0].FuelTypeSecondary)
+
                         //Engine
                         carInfoCell(title: "Engine", value: carData[0].DisplacementL + "L " + carData[0].EngineCylinders + "-cylinder engine", checker: carData[0].DisplacementL)
                 
                         //Motor
                         carInfoCell(title: "Motor", value: carData[0].EVDriveUnit, checker: carData[0].EVDriveUnit)
-                
-                        //Battery Type
-                        carInfoCell(title: "Battery Type", value: carData[0].BatteryType, checker: carData[0].BatteryType)
-                
-                        //Battery KWh
-                        carInfoCell(title: "Battery KWh", value: carData[0].BatteryKWh + "KW/h to " + carData[0].BatteryKWh_to + "KW/h", checker: carData[0].BatteryKWh)
+                                
                     }
                     Group {
+                        
+                        //Battery Type
+                        carInfoCell(title: "Battery Type", value: carData[0].BatteryType, checker: carData[0].BatteryType)
+                        
+                        //Battery Info
+                        carInfoCell(title: "Battery Info", value: carData[0].BatteryInfo, checker: carData[0].BatteryInfo)
+
+                        //Battery KWh
+                        carInfoCell(title: "Battery KWh", value: carData[0].BatteryKWh + "KW/h to " + carData[0].BatteryKWh_to + "KW/h", checker: carData[0].BatteryKWh)
+                        
+                        //Electrification Level
+                        carInfoCell(title: "Electrification Level", value: carData[0].ElectrificationLevel, checker: carData[0].ElectrificationLevel)
+
                         //Horsepower
                         carInfoCell(title: "Horsepower", value: carData[0].EngineHP + "hp", checker: carData[0].EngineHP)
                 
                         //Style
                         carInfoCell(title: "Style", value: carData[0].Doors + "-door " + carData[0].VehicleType, checker: carData[0].Doors)
+                        
+                        //Seats
+                        carInfoCell(title: "Seating", value: carData[0].SeatRows + " rows with " + carData[0].Seats + " seats total", checker: carData[0].Seats)
+
+                        
                         //Transmission
-                        carInfoCell(title: "Transmission", value: carData[0].TransmissionSpeeds + " " + carData[0].TransmissionStyle, checker: carData[0].TransmissionSpeeds)
+                        carInfoCell(title: "Transmission", value: carData[0].TransmissionSpeeds + "-speed " + carData[0].TransmissionStyle, checker: carData[0].TransmissionSpeeds)
                         
                         //Turbo
                         carInfoCell(title: "Turbocharger", value: carData[0].Turbo, checker: carData[0].Turbo)

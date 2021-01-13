@@ -24,6 +24,7 @@ struct VINData: Decodable {
     let DriveType: String
     let EngineCylinders: String
     let FuelTypePrimary: String
+    let FuelTypeSecondary: String
     let PlantCity: String
     let PlantCountry: String
     let VehicleType: String
@@ -34,10 +35,15 @@ struct VINData: Decodable {
     let EVDriveUnit: String
     let BatteryKWh: String
     let BatteryKWh_to: String
+    let ElectrificationLevel: String
+    let BatteryInfo: String
     //Misc.
     let TransmissionSpeeds: String
     let TransmissionStyle: String
     let Turbo: String
+    let BasePrice:String
+    let SeatRows: String
+    let Seats: String
 }
 
 
