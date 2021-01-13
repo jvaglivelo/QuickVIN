@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ContentView: View {
     @State var carVIN:String = ""
     @State var isLoaded:Bool = false
+    @State private var isShowingScanner = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -32,7 +35,7 @@ struct ContentView: View {
                 .padding()
                 .multilineTextAlignment(.center)
                 Button(action: {
-                    
+                    isShowingScanner = true
                 }) {
                     Text("Scan VIN")
                         .foregroundColor(.white)
@@ -41,6 +44,8 @@ struct ContentView: View {
                         .cornerRadius(8)
                 }
                 Spacer()
+            }.sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.code39], simulatedData: "WP0AA2A88HK270210", completion: self.handleScan)
             }
             if (isLoaded){
                 Button(action: {
@@ -75,6 +80,21 @@ struct ContentView: View {
 
         }
     }
+    
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+       self.isShowingScanner = false
+        switch result {
+        case .success(let code):
+            let details = code.components(separatedBy: "\n")
+            print(details[details.count-1])
+            carVIN = details[details.count-1]
+            isLoaded = true
+        case .failure(let error):
+            print("Scanning failed")
+            print("error", error)
+        }
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -140,10 +160,10 @@ struct carInfoList: View {
                         carInfoCell(title: "Horsepower", value: carData[0].EngineHP + "hp", checker: carData[0].EngineHP)
                 
                         //Style
-                        carInfoCell(title: "Style", value: carData[0].Doors + "-door " + carData[0].VehicleType, checker: carData[0].Doors)
+                        carInfoCell(title: "Doors", value: carData[0].Doors + "-door ", checker: carData[0].Doors)
                         
                         //Seats
-                        carInfoCell(title: "Seating", value: carData[0].SeatRows + " rows with " + carData[0].Seats + " seats total", checker: carData[0].Seats)
+                        carInfoCell(title: "Seating", value: carData[0].SeatRows + " row(s) with " + carData[0].Seats + " seats total", checker: carData[0].Seats)
 
                         
                         //Transmission
