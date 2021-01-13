@@ -49,6 +49,18 @@ struct ContentView: View {
             }
             
             Spacer()
+            Button(action: {
+                //isLoaded = false
+            }) {
+                Text("Settings")
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 25, alignment: .center)
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(Color.accentColor)
+                    .cornerRadius(8)
+
+            }
+
         }
     }
 }
