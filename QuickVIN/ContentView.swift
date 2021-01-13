@@ -34,7 +34,7 @@ struct ContentView: View {
             if (isLoaded){
                 Text(carVIN)
                 VStack {
-                    carInfoList(carVin: carVIN, carData: [VINData(VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "")])
+                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", PlantCity: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "")])
                 }
             }
             
@@ -55,20 +55,55 @@ struct carInfoList: View {
     var body: some View {
         VStack {
             List(){
-                carInfoCell(title: "Vehicle", value: carData[0].ModelYear + " " + carData[0].Make + " " + carData[0].Model)
-                if (carData[0].Series != ""){
-                    carInfoCell(title: "Series", value: carData[0].Series)
-                }
-                carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + ", " + carData[0].PlantCountry)
-                carInfoCell(title: "Vehicle Type", value: carData[0].VehicleType)
-                carInfoCell(title: "Fuel Type", value: carData[0].FuelTypePrimary)
-                carInfoCell(title: "Engine", value: carData[0].DisplacementL + "L " + carData[0].EngineCylinders + "-cylinder engine")
-                carInfoCell(title: "Horsepower", value: carData[0].EngineHP + "hp")
-                carInfoCell(title: "Style", value: carData[0].Doors + "-door" + " " + carData[0].BodyClass)
+                if (carData[0].ErrorCode == "0"){
+                Group {
+                        //Main Info
+                        carInfoCell(title: "Vehicle", value: carData[0].ModelYear + " " + carData[0].Make + " " + carData[0].Model, checker: carData[0].Model)
+                
+                        //Series
+                        carInfoCell(title: "Series", value: carData[0].Series, checker: carData[0].Series)
+                
+                        //Drive Type
+                        carInfoCell(title: "Drive Type", value: carData[0].DriveType, checker: carData[0].DriveType)
+                
+                        //Manufacturer Location
+                        carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + ", " + carData[0].PlantCountry, checker: carData[0].PlantCity)
+                
+                        //Vehicle Type
+                        carInfoCell(title: "Vehicle Type", value: carData[0].VehicleType, checker: carData[0].VehicleType)
+                
+                        //Primary Fuel
+                        carInfoCell(title: "Fuel Type", value: carData[0].FuelTypePrimary, checker: carData[0].FuelTypePrimary)
+                
+                        //Engine
+                        carInfoCell(title: "Engine", value: carData[0].DisplacementL + "L " + carData[0].EngineCylinders + "-cylinder engine", checker: carData[0].DisplacementL)
+                
+                        //Motor
+                        carInfoCell(title: "Motor", value: carData[0].EVDriveUnit, checker: carData[0].EVDriveUnit)
+                
+                        //Battery Type
+                        carInfoCell(title: "Battery Type", value: carData[0].BatteryType, checker: carData[0].BatteryType)
+                
+                        //Battery KWh
+                        carInfoCell(title: "Battery KWh", value: carData[0].BatteryKWh + "KW/h to " + carData[0].BatteryKWh_to + "KW/h", checker: carData[0].BatteryKWh)
+                    }
+                    Group {
+                        //Horsepower
+                        carInfoCell(title: "Horsepower", value: carData[0].EngineHP + "hp", checker: carData[0].EngineHP)
+                
+                        //Style
+                        carInfoCell(title: "Style", value: carData[0].Doors + "-door " + carData[0].VehicleType, checker: carData[0].Doors)
+                    
+                    }
+                }else if (carData[0].ErrorCode.isEmpty){
+                    carInfoCell(title: "Loading...", value: "", checker: "Loading...")
 
+                }else {
+                    carInfoCell(title: "Error", value: "Either VIN is invalid or no information avaliable", checker: "ERROR")
+                }
             }
         }.onAppear(){
-            getVINData(vin: "WBADW7C53BE443696") { (output) in
+            getVINData(vin: "5YJSA1H13EFP52468") { (output) in
                 carData = output
             }
 
@@ -79,17 +114,19 @@ struct carInfoList: View {
 struct carInfoCell: View {
     var title:String
     var value:String
+    var checker:String
     var body: some View {
-        HStack {
-            Spacer()
-            VStack {
-                Text("\(title): ")
-                Text(value)
-                    .font(Font.body.bold())
-                    .padding(.top, 10)
-
+        if (!checker.isEmpty){
+            HStack {
+                Spacer()
+                VStack {
+                    Text("\(title): ")
+                    Text(value)
+                        .font(Font.body.bold())
+                        .padding(.top, 10)
+                }
+                Spacer()
             }
-            Spacer()
         }
     }
 }
