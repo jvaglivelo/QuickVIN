@@ -7,6 +7,28 @@
 
 import Foundation
 
+struct ApiResponse: Decodable {
+    let Results: [VINData]
+}
+
+struct VINData: Decodable {
+    let VIN: String
+    let Make: String
+    let Manufacturer: String
+    let Model: String
+    let ModelYear: String
+    let BodyClass: String
+    let Doors: String
+    let EngineHP: String
+    let DriveType: String
+    let EngineCylinders: String
+    let FuelTypePrimary: String
+    let PlantCity: String
+    let PlantCountry: String
+    let VehicleType: String
+    
+}
+
 
 func getVINData(vin: String){
     
@@ -23,10 +45,11 @@ func getVINData(vin: String){
             return
         }
        do {
-          //create json object from data
-          if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-             print(json)
-          }
+
+            let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
+            let carData = apiResponse.Results
+            print(carData)
+        
        } catch let error {
          print(error.localizedDescription)
        }
