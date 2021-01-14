@@ -48,7 +48,7 @@ struct SettingsView: View {
                     .padding()
                 Spacer()
                 Button(action: {
-                    openURL(URL(string: "https://github.com/jvaglivelo")!)
+                    openURL(URL(string: "https://jvaglivelo.me")!)
                 }) {
                     Text("Jordan Vaglivelo")
                         .padding()
