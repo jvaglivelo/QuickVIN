@@ -27,7 +27,7 @@ struct SettingsView: View {
                 .padding(.bottom)
 
             VStack {
-                Text("QuickVIN quickly fetches basic data from a vehicle's VIN and displays it in an easy to read list")
+                Text("QuickVIN quickly decodes data from a vehicle's VIN and displays it in an easy to read list")
                     .padding()
                     .multilineTextAlignment(.center)
             }
