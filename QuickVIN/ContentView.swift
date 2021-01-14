@@ -61,7 +61,7 @@ struct ContentView: View {
 
                 }
                 VStack {
-                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", FuelTypeSecondary: "", PlantCity: "", PlantState: "", PlantCountry: "", VehicleType: "", DisplacementL: "", Series: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", ElectrificationLevel: "", BatteryInfo: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "", BasePrice: "", SeatRows: "", Seats: "", Trim: "", EngineModel: "")])
+                    carInfoList(carVin: carVIN, carData: [VINData(ErrorCode: "", VIN: "", Make: "", Manufacturer: "", Model: "", ModelYear: "", BodyClass: "", Doors: "", EngineHP: "", DriveType: "", EngineCylinders: "", FuelTypePrimary: "", FuelTypeSecondary: "", PlantCity: "", PlantState: "", PlantCountry: "", VehicleType: "", DisplacementL: "", BatteryType: "", EVDriveUnit: "", BatteryKWh: "", BatteryKWh_to: "", ElectrificationLevel: "", BatteryInfo: "", TransmissionSpeeds: "", TransmissionStyle: "", Turbo: "", BasePrice: "", SeatRows: "", Seats: "", Trim: "", EngineModel: "")])
                 }
             }
             
@@ -119,9 +119,6 @@ struct carInfoList: View {
 
                         //Base Price
                         carInfoCell(title: "Base Price", value: "$" + carData[0].BasePrice, checker: carData[0].BasePrice)
-
-                        //Series
-                        carInfoCell(title: "Series", value: carData[0].Series, checker: carData[0].Series)
                 
                         //Drive Type
                         carInfoCell(title: "Drive Type", value: carData[0].DriveType, checker: carData[0].DriveType)

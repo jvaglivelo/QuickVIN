@@ -30,7 +30,6 @@ struct VINData: Decodable {
     let PlantCountry: String
     let VehicleType: String
     let DisplacementL: String
-    let Series: String
     //Electric Car Exclusives
     let BatteryType: String
     let EVDriveUnit: String
