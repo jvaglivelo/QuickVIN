@@ -9,10 +9,11 @@ import SwiftUI
 import CodeScanner
 
 struct ContentView: View {
+    
     @State var carVIN:String = ""
     @State var isLoaded:Bool = false
     @State private var isShowingScanner = false
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -67,7 +68,10 @@ struct ContentView: View {
             
             Spacer()
             Button(action: {
-                //isLoaded = false
+                if let window = UIApplication.shared.windows.first {
+                    window.rootViewController = UIHostingController(rootView: SettingsView())
+                    window.makeKeyAndVisible()
+                }
             }) {
                 Text("Settings")
                     .frame(width: UIScreen.main.bounds.width * 0.9, height: 25, alignment: .center)
@@ -138,10 +142,11 @@ struct carInfoList: View {
                         //Engine
                         carInfoCell(title: "Engine", value: carData[0].DisplacementL + "L " + carData[0].EngineCylinders + "-cylinder engine", checker: carData[0].DisplacementL)
                                                 
-                    }
-                    Group {
                         //Engine Model
                         carInfoCell(title: "Engine Model", value: carData[0].EngineModel, checker: carData[0].EngineModel)
+
+                    }
+                    Group {
 
                         //Motor
                         carInfoCell(title: "Motor", value: carData[0].EVDriveUnit, checker: carData[0].EVDriveUnit)
@@ -171,12 +176,11 @@ struct carInfoList: View {
                         //Transmission
                         carInfoCell(title: "Transmission", value: carData[0].TransmissionSpeeds + "-speed " + carData[0].TransmissionStyle, checker: carData[0].TransmissionSpeeds)
                         
-                    }
-                    Group {
                         //Turbo
                         carInfoCell(title: "Turbocharger", value: carData[0].Turbo, checker: carData[0].Turbo)
-                        
+
                     }
+
                 }else if (carData[0].ErrorCode.isEmpty){
                     carInfoCell(title: "Loading...", value: "", checker: "Loading...")
 
