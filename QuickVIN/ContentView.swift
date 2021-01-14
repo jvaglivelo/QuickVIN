@@ -128,7 +128,7 @@ struct carInfoList: View {
                         carInfoCell(title: "Drive Type", value: carData[0].DriveType, checker: carData[0].DriveType)
                 
                         //Manufacturer Location
-                        carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + "," + carData[0].PlantState + " " +  carData[0].PlantCountry, checker: carData[0].PlantCity)
+                        carInfoCell(title: "Manufactured in", value: carData[0].PlantCity + "," + carData[0].PlantState + " " +  carData[0].PlantCountry, checker: carData[0].PlantCountry)
                 
                         //Vehicle Type
                         carInfoCell(title: "Vehicle Type", value: carData[0].VehicleType, checker: carData[0].VehicleType)
@@ -207,9 +207,11 @@ struct carInfoCell: View {
                 Spacer()
                 VStack {
                     Text("\(title): ")
+                        .padding(.top, 10)
                     Text(value)
                         .font(Font.body.bold())
-                        .padding(.top, 10)
+                        .padding(.bottom)
+                        .multilineTextAlignment(.center)
                 }
                 Spacer()
             }
